@@ -14,6 +14,7 @@ const movie1 = {
 
 const App = () => {
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const searchMovies = async title => {
     const response = await fetch(`${API_URL}&s=${title}`);
@@ -32,10 +33,10 @@ const App = () => {
       <div className='search'>
         <input
           placeholder="Search here..."
-          value="Superman"
-          onChange={() => {}}
+          value={searchTerm}
+          onChange={event => setSearchTerm(event.target.value)}
         />
-        <button onClick={() => {}}> Search </button>
+        <button className='search-button' onClick={() => searchMovies(searchTerm)}> Search </button>
       </div>
 
       {movies?.length > 0
