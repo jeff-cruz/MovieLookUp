@@ -4,14 +4,6 @@ import Card from './card';
 
 const API_URL = 'http://www.omdbapi.com?apikey=a0584c07';
 
-const movie1 = {
-  Title: 'Spiderman',
-  Year: '2010',
-  imdbID: 'tt1785572',
-  Type: 'movie',
-  Poster: 'N/A'
-};
-
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -24,19 +16,19 @@ const App = () => {
   };
 
   useEffect(() => {
-    searchMovies('Spiderman');
+    searchMovies('avengers');
   }, []);
 
   return (
     <div className='app'>
-      <h1>Movies</h1>
+      <h1>MovieLookup</h1>
       <div className='search'>
         <input
-          placeholder="Search here..."
+          placeholder="Search movies..."
           value={searchTerm}
           onChange={event => setSearchTerm(event.target.value)}
         />
-        <button className='search-button' onClick={() => searchMovies(searchTerm)}> Search </button>
+        <button className='search-button' onClick={() => searchMovies(searchTerm)}> Submit </button>
       </div>
 
       {movies?.length > 0
